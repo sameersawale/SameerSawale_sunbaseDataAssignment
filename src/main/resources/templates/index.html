@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">>
+<head>
+
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sunbase Data</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button"class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <ul class="navbar-nav mr-auto">
+      <a class="navbar-brand" href="#" th:href="@{/newCustomer}" > Add Customer</a>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+<div class="container my-2">
+
+  <h2>Customer List</h2>
+
+
+
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>
+        Fist Name
+      </th>
+      <th>
+        Last Name
+      </th>
+      <th>
+        Street
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        City
+      </th>
+      <th>
+        State
+      </th>
+      <th>
+        Email
+      </th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customerList}">
+      <td th:text="${customer.firstName}"></td>
+      <td th:text="${customer.lastName}"></td>
+      <td th:text="${customer.street}"></td>
+      <td th:text="${customer.address}"></td>
+      <td th:text="${customer.city}"></td>
+      <td th:text="${customer.state}"></td>
+      <td th:text="${customer.email}"></td>
+      <td>
+        <a th:href="@{/delete/{id}(id=${customer.id})}"><i class="material-icons" style="color:red"> &#9940;</i></a>
+        <a th:href="@{/updateForm/{id}(id=${customer.id})}"><i class="material-icons">&#xe3c9;</i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
